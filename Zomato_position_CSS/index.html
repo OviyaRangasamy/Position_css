@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Zomato</title>
+</head>
+<body>
+    <div id="cards"></div>
+    
+</body>
+</html>
+
+<script>
+    const dataset = [
+        {
+            image:"https://th.bing.com/th/id/R.6b7770bc5089729c024dacd1ab55e729?rik=4Amd2dvRmePUeA&riu=http%3a%2f%2fslurrp.club%2fwp-content%2fuploads%2f2018%2f11%2fDSC_0513.jpg&ehk=hCvoUAb%2frHTjzuVGKENV2JqJRUy%2bvevSpoi02TNHETc%3d&risl=&pid=ImgRaw&r=0",
+            name:"OYE 24",
+            rating:"3.9 ★",
+            cuisine:"Chinese, Fast Food",
+            price:"&#x20B9 150 for one",
+            orders:"3800+ orders placed recently",
+            image_1:"https://b.zmtcdn.com/data/o2_assets/0b07ef18234c6fdf9365ad1c274ae0631612687510.png?output-format=webp",
+            count: 0,
+
+
+    },
+
+    {
+            image:"https://www.omorganickitchen.com/wp-content/uploads/2020/06/Masala-Dosa.jpg",
+            name:"Hotel Annapoorna",
+            rating:"4.0 ★",
+            cuisine:"South Indian",
+            price:"&#x20B9 100 for one",
+            orders:"4800+ orders placed recently",
+            image_1:"https://b.zmtcdn.com/data/o2_assets/0b07ef18234c6fdf9365ad1c274ae0631612687510.png?output-format=webp",
+            count: 0,
+
+
+
+    },
+
+    {
+            image:"https://sites.google.com/site/amazingoffersdiscounts/_/rsrc/1504697137109/experience-the-delicate-taste-of-hyderabadi-biryani-in-your-home/htzpmwbmoklojshm4oyx.jpg",
+            name:"Hotel HMR",
+            rating:"4.2 ★",
+            cuisine:"South Indian, Hydrabadi",
+            price:"&#x20B9 250 for one",
+            orders:"5200+ orders placed recently",
+            image_1:"https://b.zmtcdn.com/data/o2_assets/0b07ef18234c6fdf9365ad1c274ae0631612687510.png?output-format=webp",
+            count: 0,
+    },
+
+    {
+            image:"https://gbc-cdn-public-media.azureedge.net/img65418.735x1102.jpg",
+            name:"Rottiwala",
+            rating:"3.8 ★",
+            cuisine:"North Indian",
+            price:"&#x20B9 50 for one",
+            orders:"4200+ orders placed recently",
+            image_1:"https://b.zmtcdn.com/data/o2_assets/0b07ef18234c6fdf9365ad1c274ae0631612687510.png?output-format=webp",
+            count: 0,
+    },
+
+    {
+            image:"https://nishkitchen.com/wp-content/uploads/2015/12/paneer-butter-masala-2B.jpg",
+            name:"Rudhra Restaurant",
+            rating:"3.8 ★",
+            cuisine:"North Indian",
+            price:"&#x20B9 150 for one",
+            orders:"6000+ orders placed recently",
+            image_1:"https://b.zmtcdn.com/data/o2_assets/0b07ef18234c6fdf9365ad1c274ae0631612687510.png?output-format=webp",
+            count: 0,
+    },
+
+    {
+            image:"https://th.bing.com/th/id/OIP.R7A4fslKl84K6xrAEuWmBQHaE8?w=290&h=193&c=7&r=0&o=5&dpr=1.5&pid=1.7",
+            name:"Vinay Hotel",
+            rating:"4.0 ★",
+            cuisine:"North Indian",
+            price:"&#x20B9 450 for one",
+            orders:"5000+ orders placed recently",
+            image_1:"https://b.zmtcdn.com/data/o2_assets/0b07ef18234c6fdf9365ad1c274ae0631612687510.png?output-format=webp",
+            count: 0,
+
+
+    },
+
+    {
+            image:"https://th.bing.com/th/id/OIP.JdcPi4I_a1G9LrBMrT0-CgHaFi?w=246&h=184&c=7&r=0&o=5&dpr=1.5&pid=1.7",
+            name:"Dewar Restaurant",
+            rating:"4.5 ★",
+            cuisine:"South Indian",
+            price:"&#x20B9 450 for one",
+            orders:"5000+ orders placed recently",
+            image_1:"https://b.zmtcdn.com/data/o2_assets/0b07ef18234c6fdf9365ad1c274ae0631612687510.png?output-format=webp",
+            count :0,
+
+
+    },
+
+    {
+            image:"https://i2.wp.com/nypost.com/wp-content/uploads/sites/2/2018/08/istock-618214356.jpg?quality=90&strip=all&ssl=1",
+            name:"Sam Restaurant",
+            rating:"4.5 ★",
+            cuisine:"North Indian",
+            price:"&#x20B9 250 per pack",
+            orders:"3000+ orders placed recently",
+            image_1:"https://b.zmtcdn.com/data/o2_assets/0b07ef18234c6fdf9365ad1c274ae0631612687510.png?output-format=webp",
+            count: 0,
+
+
+    },
+
+
+    {
+            image:"https://www.gimmesomeoven.com/wp-content/uploads/2020/11/Vegan-Mushroom-Gravy-Recipe-3.jpg",
+            name:"MDS Restaurant",
+            rating:"4.5 ★",
+            cuisine:"South Indian",
+            price:"&#x20B9 450 for one",
+            orders:"7000+ orders placed recently",
+            image_1:"https://b.zmtcdn.com/data/o2_assets/0b07ef18234c6fdf9365ad1c274ae0631612687510.png?output-format=webp",
+            count: 0,
+
+    },
+    ];
+
+    const product = document.getElementById("cards");
+    const main_c = document.createElement("div");
+    main_c.className = "main_container";
+    product.appendChild(main_c);
+
+    const head_container = document.createElement("header");
+    head_container.className = "head";
+    main_c.appendChild(head_container);
+
+    const logo =document.createElement("img");
+    logo.className = "logo_image";
+    logo.src ="https://b.zmtcdn.com/web_assets/b40b97e677bc7b2ca77c58c61db266fe1603954218.png";
+    head_container.appendChild(logo);
+
+    const bar = document.createElement("div");
+    head_container.appendChild(bar);
+
+    const ip_box = document.createElement("input");
+    ip_box.className = "search_bar";
+    ip_box.type = Text;
+    ip_box.placeholder = "SEARCH FOR A CUISINE, RESTAURANT OR A DISH";
+    bar.appendChild(ip_box);
+
+    const anchor = document.createElement("div");
+    anchor.className="anchor";
+    head_container.appendChild(anchor);
+
+    const login = document.createElement("a");
+    login.href = "#";
+    login.innerText = "Log in";
+    anchor.appendChild(login)
+
+    const signup = document.createElement("a");
+    signup.href = "#";
+    signup.innerText = "Sign up";
+    anchor.appendChild(signup);
+
+
+
+        for (const i of dataset){
+            const container_in = document.createElement("div");
+            container_in.className = "container";
+            main_c.appendChild(container_in);
+            const sub_c = document.createElement("div");
+            sub_c.className = "container";
+            container_in.appendChild(sub_c);
+            sub_c.addEventListener("click",disp_name);
+
+
+            const f_image = document.createElement("img");
+            f_image.className = "image";
+            f_image.src = i.image;
+
+            container_in.appendChild(f_image);
+
+
+            const f_text =document.createElement("div");
+            f_text.className = "txt";
+            
+            const off = document.createElement("div");
+            off.className = "txt_left";
+            off.innerText = "50% OFF UP TO 100! ";
+            f_text.appendChild(off);
+
+            const time = document.createElement("div");
+            time.className = "txt_right";
+            time.innerText = "35 min";
+            f_text.appendChild(time);
+            
+            f_image.appendChild(f_text);
+            container_in.appendChild(f_text);
+
+
+
+
+            
+
+            const details = document.createElement("div");
+            details.className = "spacing child";
+
+            const hotel = document.createElement("div");
+            hotel.innerText = i.name;
+            details.appendChild(hotel);
+
+            const rate = document.createElement("div");
+            rate.className = "rating";
+            rate.innerHTML = i.rating;
+            details.appendChild(rate);
+
+            container_in.appendChild(details);
+            
+            const f_details = document.createElement("div")
+            f_details.className = "spacing f_color";
+
+
+            const f_cuisine = document.createElement("div");
+            f_cuisine.innerHTML = i.cuisine;
+            f_details.appendChild(f_cuisine);
+
+            const f_price = document.createElement("div");
+            f_price.innerHTML = i.price;
+            f_details.appendChild(f_price);
+
+           container_in.appendChild(f_details);
+
+           
+
+           const item = document.createElement("div");
+           item.className = "arrange_items";
+           container_in.appendChild(item);
+
+           const add_item = document.createElement("div");
+           add_item.innerHTML = "<button>+</button>";
+           add_item.addEventListener("click",increase);
+
+           const ip_box = document.createElement("div");
+           ip_box.className="input_box";
+           ip_box.innerText = 0;
+           
+           const remove_item = document.createElement("div");
+           remove_item.innerHTML = "<button>-</button>";
+           remove_item.addEventListener("click",decrease);
+
+           item.appendChild(add_item);
+           item.appendChild(ip_box);
+           item.appendChild(remove_item);
+
+
+
+
+
+            const tg=document.createElement("hr");
+            container_in.appendChild(tg);
+
+            const end_tag = document.createElement("div");
+            end_tag.className = "spacing";
+
+            const max_orders = document.createElement("div");
+            max_orders.className = "f_color ord";
+            max_orders.innerText = i.orders;
+            
+            const image1 = document.createElement("img");
+            image1.className = "image_1";
+            image1.src = i.image_1;
+
+            end_tag.appendChild(max_orders);
+            end_tag.appendChild(image1);
+
+            container_in.appendChild(end_tag);
+            
+            
+            function disp_name(){
+                console.log("name : "+ i.name )
+            }
+
+            function increase(){
+                var val = ++(i.count);
+                ip_box.textContent=val;
+            }
+
+            function decrease(){
+                if (i.count > 0){
+                var val = --(i.count);
+                }
+                ip_box.textContent=val;    
+            }
+
+    }
+    
+</script>
